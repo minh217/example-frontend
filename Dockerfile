@@ -6,6 +6,8 @@ COPY . .
 
 RUN apt-get update &&  apt-get install -y nodejs && apt-get install -y npm
 
+RUN apt-get install -y xsel
+
 RUN npm install
 
 RUN npm run build

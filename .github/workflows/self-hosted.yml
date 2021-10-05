@@ -1,0 +1,16 @@
+ name: "Test Self Hosted"
+ on:
+  [push]
+ jobs:
+  Test:
+    runs-on: self-hosted
+    
+    steps:
+        - name: Deploy to dev
+          run: |
+            cd /ansible
+            ansible all --list-host
+            ansible-playbook deploy.yml
+        - name: Remove credential
+          run: rm -f /ansible/group_vars/all.yml
+        - run: echo "Done work."
